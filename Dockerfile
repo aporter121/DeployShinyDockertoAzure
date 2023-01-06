@@ -3,6 +3,9 @@ FROM rocker/geospatial
 LABEL maintainer "Alex - Alex.porter1@nhs.net"
 
 
+RUN groupadd  shiny \
+&& useradd --gid shiny --shell /bin/bash --create-home shiny
+
 # basic shiny functionality
 RUN R -e "install.packages(c('shiny', 'rmarkdown'))"
 
