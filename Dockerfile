@@ -20,6 +20,9 @@ COPY *.xlsx /srv/shiny-server/
 
 RUN R -e "shiny::runApp('/srv/shiny-server')"
 
+CMD ["R", "-e", "shiny::runApp('/srv/shiny-server', port = 3838, host = '0.0.0.0')"]
+
+
 # select port
 EXPOSE 3838
 
