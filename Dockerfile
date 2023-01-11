@@ -1,16 +1,13 @@
-FROM rocker/geospatial
+FROM openanalytics/r-base
 
-LABEL maintainer "Alex - Alex.porter1@nhs.net"
+# install required R packages
+RUN install.r servr
 
-# basic shiny functionality
-RUN R -e "install.packages(c('shiny', 'rmarkdown'))"
+# install pandoc
+RUN wget https://github.com/jgm/pandoc/releases/download/2.6/pandoc-2.6-1-amd64.deb
+RUN dpkg -i pandoc-2.6-1-amd64.deb
 
-# install dependencies of the euler app
-# system library dependency for the euler app
+# use default port for shinyproxy apps, so you don't have to add port in application.yml
+EXPOSE 3838  
 
-# basic shiny functionality
-RUN R -e "install.packages(c('spatialEco', 'geojsonio'))"
-
-# select port
-EXPOSE 3838
-
+CMD ["R", "-e", "servr::httd('/data/StaticContent', port = 3838, host = '0.0.0.0')"]
