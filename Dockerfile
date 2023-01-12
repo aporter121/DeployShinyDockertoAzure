@@ -31,7 +31,7 @@ COPY app /root/${project}
 
 #COPY inst/shiny-server.conf /etc/shiny-server/shiny-server.conf
 
-COPY Rprofile.site /usr/lib/R/etc/
+COPY app/Rprofile.site /usr/lib/R/etc/
 EXPOSE 3838
 
 CMD ["R", "-e", "shiny::runApp('/root/testApp')"]
