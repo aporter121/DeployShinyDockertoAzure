@@ -1,26 +1,37 @@
-FROM rocker/geospatial
+FROM openanalytics/r-base
 
-LABEL maintainer "Alex - Alex.porter1@nhs.net"
+LABEL maintainer "Alex Porter <alex.porter1@nhs.net>"
 
-# basic shiny functionality
-RUN R -e "install.packages(c('shiny', 'rmarkdown'))"
+ARG project=testApp
 
-# install dependencies of the euler app
-# system library dependency for the euler app
+# install Debian dependencies for R
+RUN apt-get update && apt-get install -y \
+    sudo \
+    pandoc \
+    pandoc-citeproc \
+    libcurl4-gnutls-dev \
+    libcairo2-dev \
+    libxt-dev \
+    libssl-dev \
+    libssh2-1-dev \
+    libxml2-dev \
+    libgit2-dev 
 
-# basic shiny functionality
-RUN R -e "install.packages(c('spatialEco', 'geojsonio'))"
+# packages needed renv and install
+RUN R -e "install.packages(c('renv', 'devtools'), repos='https://cloud.r-project.org'); renv::consent(provided = TRUE)"
+RUN R -e "install.packages('shiny', repos='http://cran.rstudio.com')"
+RUN R -e "install.packages('shinydashboard', repos='http://cran.rstudio.com')"
+RUN R -e "install.packages('shinythemes', repos='http://cran.rstudio.com')"
 
-#COPY Rprofile.site /usr/local/lib/R/etc/
+# create root folder for app in container
+RUN mkdir /root/${project}
 
 # copy the app to the image
-COPY *.Rproj /srv/shiny-server/
-COPY *.R /srv/shiny-server/
-COPY *.xlsx /srv/shiny-server/
+COPY app /root/${project}
 
-CMD ["R", "-e", "shiny::runApp('/srv/shiny-server/', port = 3838, host = '0.0.0.0')"]
+#COPY inst/shiny-server.conf /etc/shiny-server/shiny-server.conf
 
-
-# select port
+COPY Rprofile.site /usr/lib/R/etc/
 EXPOSE 3838
 
+CMD ["R", "-e", "shiny::runApp('/root/testApp')"]
