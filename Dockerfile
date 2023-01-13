@@ -19,7 +19,7 @@ ARG project=testApp
 
 # packages needed renv and install
 RUN R -e "install.packages(c('renv', 'devtools'), repos='https://cloud.r-project.org'); renv::consent(provided = TRUE)"
-RUN R -e "install.packages('httpuv', repos='http://cran.rstudio.com')"
+#RUN R -e "install.packages('httpuv', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('shiny', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('shinydashboard', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('shinythemes', repos='http://cran.rstudio.com')"
