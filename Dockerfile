@@ -34,6 +34,7 @@ RUN R -e "install.packages('shinythemes', repos='http://cran.rstudio.com')"
 # copy the app directory into the image
 COPY app/* /srv/shiny-server/app1/
 COPY app/* /srv/shiny-server/app2/
+COPY app/www /srv/shiny-server/app1/www
 
 
 
