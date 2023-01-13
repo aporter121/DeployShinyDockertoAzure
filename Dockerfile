@@ -1,4 +1,4 @@
-FROM openanalytics/r-base
+FROM rocker/geospatial
 
 LABEL maintainer "Alex Porter <alex.porter1@nhs.net>"
 
