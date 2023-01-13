@@ -32,7 +32,9 @@ RUN R -e "install.packages('shinydashboard', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('shinythemes', repos='http://cran.rstudio.com')"
 
 # copy the app directory into the image
-COPY app/* /srv/shiny-server/
+COPY app/* /srv/shiny-server/app1/
+COPY app/* /srv/shiny-server/app2/
+
 
 
 # create root folder for app in container
@@ -42,6 +44,8 @@ COPY app/* /srv/shiny-server/
 #COPY app /root/${project}
 
 #COPY inst/shiny-server.conf /etc/shiny-server/shiny-server.conf
+
+USER shiny
 
 #COPY app/Rprofile.site /usr/lib/R/etc/
 EXPOSE 3838
