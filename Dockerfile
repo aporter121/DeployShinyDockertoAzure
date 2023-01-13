@@ -5,17 +5,17 @@ LABEL maintainer "Alex Porter <alex.porter1@nhs.net>"
 ARG project=testApp
 
 # install Debian dependencies for R
-RUN apt-get update && apt-get install -y \
-    sudo \
-    pandoc \
-    pandoc-citeproc \
-    libcurl4-gnutls-dev \
-    libcairo2-dev \
-    libxt-dev \
-    libssl-dev \
-    libssh2-1-dev \
-    libxml2-dev \
-    libgit2-dev 
+#RUN apt-get update && apt-get install -y \
+#    sudo \
+#    pandoc \
+#    pandoc-citeproc \
+#    libcurl4-gnutls-dev \
+#    libcairo2-dev \
+#    libxt-dev \
+#    libssl-dev \
+#    libssh2-1-dev \
+#    libxml2-dev \
+#    libgit2-dev 
 
 # packages needed renv and install
 RUN R -e "install.packages(c('renv', 'devtools'), repos='https://cloud.r-project.org'); renv::consent(provided = TRUE)"
