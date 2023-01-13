@@ -1,4 +1,4 @@
-FROM rocker/shiny
+FROM rocker/shiny-verse
 
 LABEL maintainer "Alex Porter <alex.porter1@nhs.net>"
 
@@ -26,15 +26,14 @@ RUN apt-get update && apt-get install -y \
 
 # packages needed renv and install
 RUN R -e "install.packages(c('renv', 'devtools'), repos='https://cloud.r-project.org'); renv::consent(provided = TRUE)"
-#RUN R -e "install.packages('httpuv', repos='http://cran.rstudio.com')"
-RUN R -e "install.packages('shiny', repos='http://cran.rstudio.com')"
+RUN R -e "install.packages('plotly', repos='http://cran.rstudio.com')"
+RUN R -e "install.packages('readxl', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('shinydashboard', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('shinythemes', repos='http://cran.rstudio.com')"
 
 # copy the app directory into the image
-COPY app/* /srv/shiny-server/app1/
-COPY app/* /srv/shiny-server/app2/
-COPY app/www /srv/shiny-server/app1/www
+#COPY app/* /srv/shiny-server/app1/
+#COPY app/www /srv/shiny-server/app1/www
 
 
 
