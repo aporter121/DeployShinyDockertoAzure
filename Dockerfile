@@ -30,7 +30,7 @@ RUN R -e "install.packages('plotly', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('readxl', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('shinydashboard', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('shinythemes', repos='http://cran.rstudio.com')"
-RUN R -e "install.packages('flexdashoard', repos='http://cran.rstudio.com')"
+RUN R -e "install.packages('flexdashboard', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('scales', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('DT', repos='http://cran.rstudio.com')"
 
