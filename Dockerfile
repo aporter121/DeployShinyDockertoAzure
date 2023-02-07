@@ -48,7 +48,7 @@ RUN R -e "install.packages('DT', repos='http://cran.rstudio.com')"
 
 #COPY inst/shiny-server.conf /etc/shiny-server/shiny-server.conf
 
-USER shiny
+#USER shiny
 
 #COPY app/Rprofile.site /usr/lib/R/etc/
 EXPOSE 3838
