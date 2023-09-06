@@ -10,7 +10,7 @@
 name: Build and deploy a container to an Azure Web App
 
 env:
-  AZURE_WEBAPP_NAME: ShinyTest   # set this to your application's name
+  AZURE_WEBAPP_NAME: nhse   # set this to your application's name
 
 on:
   push:
