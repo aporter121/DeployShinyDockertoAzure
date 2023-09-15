@@ -46,7 +46,7 @@ RUN R -e "install.packages('DT', repos='http://cran.rstudio.com')"
 # copy the app to the image
 #COPY app /root/${project}
 
-#COPY inst/shiny-server.conf /etc/shiny-server/shiny-server.conf
+COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 
 #USER shiny
 
