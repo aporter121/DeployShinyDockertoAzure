@@ -33,6 +33,13 @@ RUN R -e "install.packages('shinythemes', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('flexdashboard', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('scales', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('DT', repos='http://cran.rstudio.com')"
+RUN R -e "install.packages('reactable', repos='http://cran.rstudio.com')"
+RUN R -e "install.packages('reactablefmtr', repos='http://cran.rstudio.com')"
+RUN R -e "install.packages('gridExtra', repos='http://cran.rstudio.com')"
+RUN R -e "install.packages('cowplot', repos='http://cran.rstudio.com')"
+RUN R -e "install.packages('tippy', repos='http://cran.rstudio.com')"
+RUN R -e "install.packages('shinythemes', repos='http://cran.rstudio.com')"
+
 
 # copy the app directory into the image
 #COPY app/* /srv/shiny-server/app1/
