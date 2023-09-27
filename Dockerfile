@@ -39,6 +39,8 @@ RUN R -e "install.packages('gridExtra', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('cowplot', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('tippy', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('shinythemes', repos='http://cran.rstudio.com')"
+RUN R -e "install.packages('shinyalert', repos='http://cran.rstudio.com')"
+
 
 
 # copy the app directory into the image
