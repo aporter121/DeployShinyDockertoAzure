@@ -40,6 +40,7 @@ RUN R -e "install.packages('cowplot', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('tippy', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('shinythemes', repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('shinyalert', repos='http://cran.rstudio.com')"
+RUN R -e "install.packages(c('rio', 'pacman', 'dygraphs'), repos='https://cloud.r-project.org'); renv::consent(provided = TRUE)"
 
 
 
